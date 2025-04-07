@@ -1,0 +1,130 @@
+{ inputs, pkgs, lib, config, ... }:
+
+with lib;
+let
+ sharedModules = builtins.fromJSON (builtins.readFile ./waybar/config.json);
+in {
+	home.packages = with pkgs; [
+	    wofi 
+			swaybg 
+			wl-clipboard 
+			hyprland 
+			waybar
+			wlinhibit
+      brightnessctl
+      wlr-randr
+      wlogout
+      watershot
+      xdg-desktop-portal-hyprland
+      playerctl
+      pamixer
+      waybar
+      mako
+	];
+
+  services.mako = {
+    enable = true;
+
+    defaultTimeout = 5000;
+    width = 400;
+
+    extraConfig =
+      /*
+      ini
+      */
+      ''
+        [urgency=high]
+        layer=overlay
+        default-timeout=0
+        ignore-timeout=true
+
+        [mode=do-not-disturb urgency=low]
+        invisible=true
+
+        [mode=do-not-disturb urgency=normal]
+        invisible=true
+
+        [mode=shut-up]
+        invisible=true
+      '';
+  };
+
+  programs.rofi = {
+    enable = true;
+
+    package = pkgs.rofi-wayland;
+
+    plugins = with pkgs; [
+      (rofi-calc.override {
+        rofi-unwrapped = rofi-wayland-unwrapped;
+      })
+    ];
+
+    extraConfig = {
+      normalize-match = true;
+      show-icons = true;
+    };
+  };
+
+	programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        mod = "dock";
+        margin-top = 3;
+        modules-center = [ "hyprland/workspaces" ];
+        modules-left = [
+          "clock"
+          "custom/weather"
+          "custom/agenda"
+          "network"
+        ];
+        modules-right = [
+          "tray"
+          "cpu"
+          "temperature"
+          "memory"
+          "custom/updates"
+          "custom/language"
+          "battery"
+          "backlight"
+          "custom/wlinhibit"
+          "pulseaudio"
+          "pulseaudio#microphone"
+        ];
+      }
+      // sharedModules;
+    };
+  };
+  
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      effect-blur = "20x3";
+      clock = true;
+      ignore-empty-password = true;
+      daemonize = true;
+      show-failed-attempts = true;
+      screenshots = true;
+    };
+  };
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "lock";
+        command = "${config.programs.swaylock.package}/bin/swaylock";
+      }
+      {
+        event = "before-sleep";
+        command = "${config.programs.swaylock.package}/bin/swaylock; ${pkgs.playerctl}/bin/playerctl pause";
+      }
+    ];
+  };
+
+  home.file.".config/wofi.css".source = ./wofi.css;
+  home.file.".config/waybar/style.css".source = ./waybar/style.css;
+	home.file.".config/waybar/scripts".source = ./waybar/scripts;
+  home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+}

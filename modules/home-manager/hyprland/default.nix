@@ -20,33 +20,24 @@ in {
       pamixer
       waybar
       mako
+      nwg-look
 	];
 
   services.mako = {
     enable = true;
 
-    defaultTimeout = 5000;
-    width = 400;
+    settings = {
+      defaultTimeout = 5000;
+      width = 400;
 
-    extraConfig =
-      /*
-      ini
-      */
-      ''
-        [urgency=high]
-        layer=overlay
-        default-timeout=0
-        ignore-timeout=true
+      "urgency.high.layer" = "overlay";
+      "urgency.high.default-timeout" = 0;
+      "urgency.high.ignore-timeout" = true;
 
-        [mode=do-not-disturb urgency=low]
-        invisible=true
-
-        [mode=do-not-disturb urgency=normal]
-        invisible=true
-
-        [mode=shut-up]
-        invisible=true
-      '';
+      "mode.do-not-disturb.urgency.low.invisible" = true;
+      "mode.do-not-disturb.urgency.normal.invisible" = true;
+      "mode.shut-up.invisible" = true;   
+    };
   };
 
   programs.rofi = {
@@ -64,6 +55,8 @@ in {
       normalize-match = true;
       show-icons = true;
     };
+
+    theme = "Monokai";
   };
 
 	programs.waybar = {

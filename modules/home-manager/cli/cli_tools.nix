@@ -22,6 +22,9 @@
     wl-clipboard
     gcr
     seahorse
+    vim
+    hdparm
+    bonnie
   ];
 
   programs.git = {

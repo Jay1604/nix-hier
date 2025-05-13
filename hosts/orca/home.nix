@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
 
     #Languages
-    nodejs_23
+    nodejs
     python3
     texliveFull
     jdk

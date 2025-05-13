@@ -20,12 +20,6 @@
 
   networking.wireless.secretsFile = config.sops.secrets.wpa.path; 
 
-  networking.wpa_supplicant.extraConfig = ''
-    network={
-      key_mgmt=NONE
-      disabled=1
-    }'';
-  
   networking.wireless.networks = {
     WIFIonICE = {
 

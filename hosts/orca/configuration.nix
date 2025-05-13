@@ -20,6 +20,8 @@
     theme = "blahaj";
   };
 
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
   boot.initrd.systemd.enable = true;
 
   nix.optimise.automatic = true;

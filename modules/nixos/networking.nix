@@ -11,12 +11,7 @@
   };
 
   # Enable networking
-  services.connman.enable = true;
-
-  # networking.nameservers = ["194.242.2.2" "9.9.9.9"];
-  networking.networkmanager.dns = "systemd-resolved";
-  networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
+  networking.nameservers = ["194.242.2.2" "9.9.9.9"];
 
   networking.wireless.secretsFile = config.sops.secrets.wpa.path; 
 

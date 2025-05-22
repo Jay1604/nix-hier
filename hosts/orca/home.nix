@@ -42,6 +42,7 @@
      # withOpenASAR = true;
       withVencord = true;
     })
+    gimp
 
     # LibreOffice
     libreoffice-qt

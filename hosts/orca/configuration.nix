@@ -27,14 +27,6 @@
   nix.optimise.automatic = true;
   nix.optimise.dates = [ "03:45" ];
 
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
-
   boot.loader.timeout = 0;
   boot.kernel.sysctl."kernel.sysrq" = 1;
 

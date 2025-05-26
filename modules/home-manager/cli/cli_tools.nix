@@ -46,4 +46,17 @@
       };
     };
   };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/jay/nixos-config";
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 2d --keep 3";
+  };
 }

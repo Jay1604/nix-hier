@@ -61,11 +61,6 @@
     _JAVA_AWT_WM_NONREPARENTING=1;
   };
 
-  programs.nh = {
-    enable = true;
-    flake = "/home/jay/nixos-config";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

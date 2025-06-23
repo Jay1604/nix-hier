@@ -20,11 +20,13 @@
     swig
     yubikey-manager
     wl-clipboard
-    gcr
     seahorse
     vim
     hdparm
     bonnie
+    lshw
+    openldap
+    pywal16
   ];
 
   programs.git = {

@@ -24,6 +24,7 @@
       rebuild = "git -C /home/jay/nixos-config add --all && nh os switch";
       cleanup = "sudo nix-collect-garbage";
       gaa = "git add --all";
+      minecraft = "nvidia-offload prismlauncher";
     };
 
     programs.kitty = lib.mkForce {

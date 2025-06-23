@@ -14,7 +14,9 @@ in {
       brightnessctl
       wlr-randr
       wlogout
-      watershot
+      (pkgs.flameshot.override { 
+        enableWlrSupport = true; 
+      })
       xdg-desktop-portal-hyprland
       playerctl
       pamixer

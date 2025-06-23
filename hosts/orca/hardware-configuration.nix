@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -26,11 +26,13 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/secondary" = 
-  {
-    device = "dev/disk/by-uuid/b692d982-2603-4f40-8bf2-da3e6009fcfa";
-    fsType = "ext4";
-  };
+  fileSystems."/mnt/games" =
+    { device = "/dev/disk/by-uuid/b692d982-2603-4f40-8bf2-da3e6009fcfa";
+      fsType = "ext4";
+      options = [ "nofail" "user" ];
+    };
+
+  boot.initrd.luks.devices."luks-81c01fe0-5db7-41f5-bd83-ff66a9243c72".device = "/dev/disk/by-uuid/81c01fe0-5db7-41f5-bd83-ff66a9243c72";
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/60e407df-b147-46b5-942f-27c863022ebf"; }
@@ -41,6 +43,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-59320ca2ae26.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

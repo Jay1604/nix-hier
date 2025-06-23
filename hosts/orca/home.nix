@@ -29,8 +29,7 @@
     vscode-fhs
     tidal-hifi
     nextcloud-client
-    prismlauncher
-    whatsapp-for-linux
+    whatsie
     element-desktop
     signal-desktop
     telegram-desktop  
@@ -38,10 +37,6 @@
     tor-browser-bundle-bin
     filezilla
     usbimager
-    (pkgs.discord.override {
-     # withOpenASAR = true;
-      withVencord = true;
-    })
     gimp
 
     # LibreOffice
@@ -49,10 +44,8 @@
     hunspell
     hunspellDicts.uk_UA
     hunspellDicts.de_DE
+    vlc
   ];
-
-  services.gnome-keyring.enable = true;
-
 
   home.sessionVariables = {
     #EDITOR = "code";

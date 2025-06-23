@@ -101,10 +101,29 @@
   };
 
   # Install NVIDIA drivers
-  hardware.nvidia.package = pkgs.linuxKernel.packages.linux_6_6.nvidia_x11;
-  hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia = {
+    powerManagement.enable = false;
+    modesetting.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+    prime = {
+      offload = {
+			  enable = true;
+			  enableOffloadCmd = true;
+		  };
+
+      intelBusId = "PCI:0:2:0";
+		  nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
+  
   
   services.xserver.dpi = 110;
+  services.xserver.videoDrivers = ["nvidia"];
   environment.variables = { GDK_SCALE = "0.3"; };
 
 
@@ -116,9 +135,11 @@
   users.users.jay = {
     isNormalUser = true;
     # hashedPasswordFile = config.sops.secrets.user.password;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     shell = pkgs.fish;
   };
+
+  virtualisation.docker.enable = true;
 
   programs.fish.enable = true;
 
@@ -151,6 +172,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  services.gnome.gnome-keyring.enable = true;
   
   environment.systemPackages = with pkgs; [
     tree
@@ -166,6 +189,15 @@
     nixd 
     nvidia-docker
     steam
+    prismlauncher
+
+    (writeShellScriptBin "nvidia-offload" ''
+      export __NV_PRIME_RENDER_OFFLOAD=1
+      export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+      export __GLX_VENDOR_LIBRARY_NAME=nvidia
+      export __VK_LAYER_NV_optimus=NVIDIA_only
+      exec "$@"
+    '')
   ];
 
   fonts.packages = with pkgs; [

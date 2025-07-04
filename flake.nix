@@ -14,7 +14,7 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, sops-nix, home-manager, nix-easyroam, ... } @ inputs: 

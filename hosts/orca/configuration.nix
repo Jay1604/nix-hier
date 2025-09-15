@@ -8,6 +8,7 @@
       inputs.home-manager.nixosModules.default
       ../../modules/nixos/eduroam.nix
       ../../modules/nixos/networking.nix
+      ../../modules/nixos/openvpn.nix
     ];
 
   # Bootloader.

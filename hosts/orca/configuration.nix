@@ -178,7 +178,6 @@
   
   environment.systemPackages = with pkgs; [
     tree
-    nh
     nix-output-monitor
     nvd
     wget

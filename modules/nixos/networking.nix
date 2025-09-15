@@ -46,46 +46,27 @@
     BBHOTELSGuest = {
 
     };
-    
-    "38C3-open" = {
-      
-    };
-
-    "38C3" = {
-      auth = ''
-        key_mgmt=WPA-EAP
-        eap=TTLS
-        identity="38C3"
-        password="38C3"
-        ca_cert="${builtins.fetchurl {
-          url = "https://letsencrypt.org/certs/isrgrootx1.pem";
-          sha256 = "sha256:1la36n2f31j9s03v847ig6ny9lr875q3g7smnq33dcsmf2i5gd92";
-        }}"
-        altsubject_match="DNS:radius.c3noc.net"
-        phase2="auth=PAP"
-      '';
-    };
 
     "r" = {
-      pskRaw = ext:r;
+      pskRaw = "ext:r";
     };
 
     "mobilis pyxis telephonum" = {
-      pskRaw = ext:julis;
+      pskRaw = "ext:julis";
     };
     wal = {
-      pskRaw = ext:wal;
+      pskRaw = "ext:wal";
       priority = 11;
     };
     "HHUD-Y" = {
-      pskRaw = ext:hhudy;
+      pskRaw = "ext:hhudy";
       priority = 10;
     };
     "WLAN-756Q9M" = {
-      pskRaw = ext:andrea;
+      pskRaw = "ext:andrea";
     };
     "FritzBox 7490" = {
-      pskRaw = ext:zuhause;
+      pskRaw = "ext:zuhause";
     };    
   };
 

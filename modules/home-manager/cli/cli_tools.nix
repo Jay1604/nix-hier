@@ -21,7 +21,6 @@
     yubikey-manager
     wl-clipboard
     seahorse
-    vim
     hdparm
     bonnie
     lshw
@@ -43,9 +42,18 @@
     settings = {
       preset = "transgender";
       mode = "rgb";
+      light_dark = "dark";
+      lightness = 0.75;
       color_align = {
         mode = "horizontal";
+        custom_colors = [];
+        fore_back = null;
       };
+      backend = "neofetch";
+      args = null;
+      distro = null;
+      pride_month_shown = [];
+      pride_month_disable = false;
     };
   };
 
@@ -53,6 +61,10 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    extraConfig =''
+      set number relativenumber
+      set background=dark
+    '';
   };
 
   programs.nh = {

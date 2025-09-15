@@ -45,11 +45,11 @@ in {
   programs.rofi = {
     enable = true;
 
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
 
     plugins = with pkgs; [
       (rofi-calc.override {
-        rofi-unwrapped = rofi-wayland-unwrapped;
+        rofi-unwrapped = rofi-unwrapped;
       })
     ];
 

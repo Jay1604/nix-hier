@@ -29,7 +29,6 @@
     vscode-fhs
     tidal-hifi
     nextcloud-client
-    whatsie
     element-desktop
     signal-desktop
     telegram-desktop  

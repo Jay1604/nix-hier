@@ -24,6 +24,10 @@
 
     };
 
+    Vodafone-0EE6 = {
+      pskRaw = "ext:tante";
+    };
+
     "msg-internet" = {
       auth = ''
       key_mgmt=WPA-EAP

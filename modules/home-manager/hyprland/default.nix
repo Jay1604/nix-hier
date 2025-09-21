@@ -7,14 +7,13 @@ in {
 	home.packages = with pkgs; [
 	    wofi 
 			swaybg 
-			wl-clipboard 
-			hyprland 
+			wl-clipboard  
 			waybar
 			wlinhibit
       brightnessctl
       wlr-randr
       wlogout
-      watershot
+      flameshot
       xdg-desktop-portal-hyprland
       playerctl
       pamixer
@@ -22,6 +21,12 @@ in {
       mako
       nwg-look
 	];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    config.common.default = "*";
+  };
 
   services.mako = {
     enable = true;
@@ -68,19 +73,12 @@ in {
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "clock"
-          "custom/weather"
-          "custom/agenda"
-          "network"
         ];
         modules-right = [
           "tray"
           "cpu"
           "temperature"
           "memory"
-          "custom/updates"
-          "custom/language"
-          "battery"
-          "backlight"
           "custom/wlinhibit"
           "pulseaudio"
           "pulseaudio#microphone"

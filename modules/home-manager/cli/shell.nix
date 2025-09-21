@@ -24,6 +24,7 @@
       rebuild = "git -C /home/jay/nixos-config add --all && nh os switch";
       cleanup = "sudo nix-collect-garbage";
       gaa = "git add --all";
+      whatsie = "env --unset WAYLAND_DISPLAY whatsie";
     };
 
     programs.kitty = lib.mkForce {

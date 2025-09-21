@@ -10,10 +10,8 @@
     htop
     wev
     curl
-    git
     zip
     killall
-    hyfetch
     sops
     unzip
     libnotify
@@ -22,7 +20,6 @@
     wl-clipboard
     gcr
     seahorse
-    vim
     hdparm
     bonnie
   ];
@@ -30,20 +27,27 @@
   programs.git = {
     enable = true;
     userName = "Jay1604";
-    userEmail = "example@example.com";
+    userEmail = "jay@niebisch.me";
     extraConfig = {
       init.defaultBranch = "main";
     };  
   };
 
   programs.hyfetch = {
-    enable = true;
+    enable = false;
     settings = {
       preset = "transgender";
       mode = "rgb";
+      auto_detect_light_dark = true;
+      light_dark = "dark";
+      lightness = 0.65;
       color_align = {
         mode = "horizontal";
       };
+      backend = "neofetch";
+      args = null;
+      distro = null;
+      pride_month_disable = false;
     };
   };
 

@@ -5,6 +5,8 @@
 
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    tidaLuna.url = "github:Inrixia/TidaLuna";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +16,7 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, sops-nix, home-manager, nix-easyroam, ... } @ inputs: 
@@ -33,6 +35,15 @@
           sops-nix.nixosModules.sops
           nix-easyroam.nixosModules.nix-easyroam
         ];
+      };
+      narwal = nixpkgs.lib.nixosSystem {
+	      specialArgs = {inherit inputs;};
+        inherit system;
+	      modules = [
+	        ./hosts/narwal/configuration.nix
+          inputs.home-manager.nixosModules.default
+	        sops-nix.nixosModules.sops
+	      ];
       };
     };
   };

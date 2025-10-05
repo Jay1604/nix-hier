@@ -11,18 +11,16 @@
   };
 
   # Enable networking
-  networking.nameservers = ["194.242.2.2" "9.9.9.9"];
+  networking.nameservers = ["9.9.9.9"];
 
   networking.wireless.secretsFile = config.sops.secrets.wpa.path; 
 
   networking.wireless.networks = {
-    WIFIonICE = {
+    WIFIonICE = {};
 
-    };
+    "IKEA WiFi" = {};
 
-    c4 = {
-
-    };
+    c4 = {};
 
     Vodafone-0EE6 = {
       pskRaw = "ext:tante";
@@ -39,13 +37,9 @@
       priority = 10;
     };
 
-    "MELIA-Berlin" ={
+    "MELIA-Berlin" ={};
 
-    };
-
-    BBHOTELSGuest = {
-
-    };
+    BBHOTELSGuest = {};
 
     "r" = {
       pskRaw = "ext:r";

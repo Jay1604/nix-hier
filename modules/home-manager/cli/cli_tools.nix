@@ -61,6 +61,7 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    defaultEditor = true;
     extraConfig =''
       set number relativenumber
       set background=dark

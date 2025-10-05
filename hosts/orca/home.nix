@@ -47,7 +47,7 @@
   ];
 
   home.sessionVariables = {
-    #EDITOR = "code";
+    EDITOR = "nvim";
     FLAKE = "/home/jay/nixos-config";
     NIXOS_OZONE_WL = "1";
     _JAVA_AWT_WM_NONREPARENTING=1;

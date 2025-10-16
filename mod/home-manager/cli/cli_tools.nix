@@ -51,12 +51,6 @@
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    viAlias = true;
-  };
-
   programs.nh = {
     enable = true;
     flake = "/home/jay/nixos-config";

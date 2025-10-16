@@ -43,7 +43,8 @@
     protonup-qt
     atlauncher
     inputs.tidaLuna.packages.${system}.default
-
+    ausweisapp
+		ausweiskopie
 
     # LibreOffice
     libreoffice-qt

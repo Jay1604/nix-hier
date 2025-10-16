@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, outputs, ... }:
 
 {
   imports =
@@ -40,7 +40,7 @@
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "de_DE.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
@@ -167,6 +167,7 @@
     steam
     nvidia-vaapi-driver
     egl-wayland
+    outputs.packages."${pkgs.stdenv.system}".nixvim
   ];
 
   fonts.packages = with pkgs; [

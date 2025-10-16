@@ -2,7 +2,7 @@
 
 {
   sops.secrets.easyroam = {
-    sopsFile = ../../secrets/eduroam;
+    sopsFile = ../../secrets/easyroam;
     format = "binary";
     restartUnits = [ "easyroam-install.service" ];
   };

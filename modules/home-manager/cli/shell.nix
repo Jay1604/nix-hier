@@ -25,6 +25,8 @@
       cleanup = "sudo nix-collect-garbage";
       gaa = "git add --all";
       minecraft = "nvidia-offload prismlauncher";
+			vim = "nvim";
+			vi = "nvim";
     };
 
     programs.kitty = lib.mkForce {

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, outputs, ... }:
 
 {
   imports =
@@ -46,7 +46,7 @@
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "de_DE.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
@@ -176,22 +176,25 @@
 
   services.gnome.gnome-keyring.enable = true;
   
-  environment.systemPackages = with pkgs; [
-    tree
-    nix-output-monitor
-    nvd
-    wget
-    cacert
-    vesktop
-    home-manager
-    openssl 
-    alejandra
-    nixd 
-    nvidia-docker
-    steam
-    prismlauncher
+  environment.systemPackages = [
+    pkgs.tree
+    pkgs.nix-output-monitor
+    pkgs.nvd
+    pkgs.wget
+    pkgs.cacert
+    pkgs.vesktop
+    pkgs.home-manager
+    pkgs.openssl 
+    pkgs.alejandra
+    pkgs.nixd 
+    pkgs.nvidia-docker
+    pkgs.steam
+    pkgs.prismlauncher
+    pkgs.ausweiskopie
+    pkgs.ausweisapp
+		outputs.packages."${pkgs.stdenv.system}".nixvim
 
-    (writeShellScriptBin "nvidia-offload" ''
+    (pkgs.writeShellScriptBin "nvidia-offload" ''
       export __NV_PRIME_RENDER_OFFLOAD=1
       export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
       export __GLX_VENDOR_LIBRARY_NAME=nvidia

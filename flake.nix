@@ -15,17 +15,26 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
+
+    nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager, nix-easyroam, ... } @ inputs: 
+  outputs = { self, nixpkgs, sops-nix, home-manager, nix-easyroam, nixvim, ... } @ inputs: 
   let 
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    nixvimModuleFor = pkgs: {
+      inherit pkgs;
+      module = import ./modules/nixvim { inherit pkgs inputs; };
+    };
   in
   {
+    packages.${system}.nixvim = nixvim.legacyPackages.${system}.makeNixvimWithModule (
+      nixvimModuleFor nixpkgs.legacyPackages.${system}
+    );
     nixosConfigurations = {
       orca = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit (self) inputs outputs;};
         inherit system;
         modules = [
           ./hosts/orca/configuration.nix

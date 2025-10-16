@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ../../modules/home-manager/hyprland/default.nix
-    ../../modules/home-manager/browser/zen.nix
-    ../../modules/home-manager/cli/cli_tools.nix
+    ../../mod/home-manager/hyprland/default.nix
+    ../../mod/home-manager/browser/zen.nix
+    ../../mod/home-manager/cli/cli_tools.nix
   ];
 
   home.username = "jay";

@@ -13,13 +13,14 @@ in {
       brightnessctl
       wlr-randr
       wlogout
-      flameshot
       xdg-desktop-portal-hyprland
       playerctl
       pamixer
       waybar
       mako
       nwg-look
+      grim
+      slurp
 	];
 
   xdg.portal = {

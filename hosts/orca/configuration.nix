@@ -4,10 +4,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/main-user.nix
+      ../../mod/nixos/main-user.nix
       inputs.home-manager.nixosModules.default
-      ../../modules/nixos/eduroam.nix
-      ../../modules/nixos/networking.nix
+      ../../mod/nixos/eduroam.nix
+      ../../mod/nixos/networking.nix
     ];
 
   # Bootloader.

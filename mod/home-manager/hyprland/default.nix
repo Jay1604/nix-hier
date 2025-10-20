@@ -14,6 +14,7 @@ in {
       wlr-randr
       wlogout
       xdg-desktop-portal-hyprland
+			xdg-desktop-portal-gtk
       playerctl
       pamixer
       waybar
@@ -25,8 +26,8 @@ in {
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-    config.common.default = "*";
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland xdg-desktop-portal-gtk ];
+    config.common.default = "hyprland";
   };
 
   services.mako = {

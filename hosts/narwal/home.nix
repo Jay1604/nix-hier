@@ -45,6 +45,7 @@
     inputs.tidaLuna.packages.${system}.default
     ausweisapp
 		ausweiskopie
+		wine
 
     # LibreOffice
     libreoffice-qt

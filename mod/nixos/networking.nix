@@ -15,6 +15,9 @@
 
   networking.wireless.secretsFile = config.sops.secrets.wpa.path; 
 
+	# Opening port 24727 for ausweisapp
+	networking.firewall.allowedUDPPorts = [ 24727 ];
+
   networking.wireless.networks = {
     WIFIonICE = {
 

@@ -24,7 +24,7 @@
     #programs
     hello
     thunderbird
-    #jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     vscode-fhs
     nextcloud-client
     element-desktop

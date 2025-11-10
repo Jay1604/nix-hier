@@ -46,6 +46,7 @@
     ausweisapp
 		ausweiskopie
 		wine
+		teamspeak6-client
 
     # LibreOffice
     libreoffice-qt

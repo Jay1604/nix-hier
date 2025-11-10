@@ -26,11 +26,13 @@
 
   programs.git = {
     enable = true;
-    userName = "Jay1604";
-    userEmail = "jay@niebisch.me";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };  
+		settings = {
+			user = {
+				userName = "Jay1604";
+				userEmail = "jay@niebisch.me";
+			};
+			init.defaultBranch = "main";
+		};
   };
 
   programs.hyfetch = {
